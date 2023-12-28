@@ -6,6 +6,7 @@ import cors from 'cors';
 import compression from 'compression';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import router from './routes';
 
 dotenv.config();
 
@@ -54,3 +55,5 @@ const startServer = async (
 };
 
 startServer(DB, PORT);
+
+app.use('/', router());

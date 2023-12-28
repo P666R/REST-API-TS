@@ -1,16 +1,14 @@
 import crypto from 'crypto';
 import User from '../models/userModel';
 
-const SECRET = process.env.CRYPTO_SECRET;
-
-export const authentication = (salt: string, password: string): string => {
+export const authentication = (salt: string, password: string) => {
   return crypto
     .createHmac('sha256', [salt, password].join('/'))
-    .update(SECRET)
+    .update(process.env.CRYPTO_SECRET)
     .digest('hex');
 };
 
-export const random = (): string => crypto.randomBytes(128).toString('base64');
+export const random = () => crypto.randomBytes(128).toString('base64');
 
 export const getUsers = () => User.find({});
 
