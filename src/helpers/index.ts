@@ -4,7 +4,7 @@ import User from '../models/userModel';
 export const authentication = (salt: string, password: string) => {
   return crypto
     .createHmac('sha256', [salt, password].join('/'))
-    .update(process.env.CRYPTO_SECRET)
+    .update(process.env.CRYPTO_SECRET.toString())
     .digest('hex');
 };
 

@@ -12,6 +12,7 @@ dotenv.config();
 
 const app = express();
 
+//* Setting credentials: true in the CORS configuration allows browser to include credentials in cross-origin requests
 app.use(
   cors({
     credentials: true,
